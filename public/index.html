@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+	@import url(css/leaflet7.css);
+	@import url(css/leafletdraw.css);
+
+html,body{height:100%; }
+
+#map {width:100%;
+      height:100%;
+      }
+
+      .leaflet-container {
+        background: #ECF4FA;
+        outline: 0;
+    }
+
+	body {
+		background-color: #212121;
+		margin: 0px;
+	}
+
+	html {
+		margin: 0px;
+	}
+
+	#map {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		pointer-events: all;
+		z-index:1;
+	}
+
+	#InputPanel {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		pointer-events: none;
+		top: -70px;
+		left: 0px;
+		opacity: 1;
+		z-index: 40000;
+		-webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
+	}
+
+	/* #MapContextSwitch {
+		width: 380px;
+		height: 100px;
+		background-color: rgba(255, 255, 255, 0.8);
+		position: absolute;
+		pointer-events: all;
+		bottom:20px;
+		left: 10px;
+		opacity: 1;
+		z-index: 40000;
+	} */
+
+	#SliderPanel {
+		width: 100%;
+		height: 65px;
+		position: absolute;
+		pointer-events: none;
+		top: -200px;
+		left: 0px;
+		opacity: 1;
+		/* background-color: red; */
+		z-index: 40000;
+	}
+
+	#OutputPanel {
+		pointer-events: none;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: -70px;
+		left: 0px;
+		opacity: 1;
+		z-index: 2000;
+		border-radius: 0px;
+
+	}
+
+	#LegendaPanel {
+		pointer-events: none;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		opacity: 1;
+		z-index: 2000;
+		border-radius: 0px;
+
+	}
+
+	#main {
+		font-family: 'RijksoverheidSans';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		pointer-events: none;
+		left: 0px;
+		z-index:1000;
+	}
+
+	#donutChart {
+		width:150px;
+		height:100px;
+		position:absolute;
+		right:0px;
+		top:150px;
+		z-index:80000;
+		/* background-color: aqua; */
+	}
+
+	#left_liner {
+		width:10px;
+		height:100%;
+		position:absolute;
+		background-color:424242; 
+		left:0px;
+		top:0px;
+		z-index:3000;
+		/* background-color: aqua; */
+	}
+
+	#right_liner {
+		width:10px;
+		height:100%;
+		position:absolute;
+		background-color:424242; 
+		right:0px;
+		top:0px;
+		z-index:90000;
+		/* background-color: aqua; */
+	}
+	#bottom_liner {
+		width:100%;
+		height:10px;
+		position:absolute;
+		background-color:424242; 
+		left:0px;
+		bottom:0px;
+		z-index:3000;
+		/* background-color: aqua; */
+	}
+
+	path.slice{
+  stroke-width:2px;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 1px;
+  fill: none;
+}
+
+
+</style>
+
+<script>
+
+	var flag_racechart_active = false;
+
+	var donutdata_bouwperiode_log;
+  var donutdata_woningtype_log;
+  var donutdata_weq_log;
+
+</script>
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+	<title>Warmteweegschaal</title>
+
+	<link rel='icon' type='image/png' href='/favicon.png'>
+	<link rel='stylesheet' href='global.css'>
+	<link rel='stylesheet' href='build/bundle.css'>
+	<script src="js/d3v6.min.js"></script>
+	<script src="js/keyboardfocusable.js"></script>
+	<script src="js/utilities.js"></script>
+	<script src="js/leaflet.js"></script>
+	<script src="js/leafletajax.js"></script>
+	<script src="js/leaflet_snogylop.js"></script>
+	<script src="js/leaflet_vectorgrid_msie.js"></script>
+	<script src="js/leafletspiderify.js"></script>
+	<script src="js/turf.min.js"></script>
+	<script src="js/leafletdraw.js"></script>
+
+	<script defer src='build/bundle.js'></script>
+</head>
+
+<body>
+	<div id="left_liner"></div>
+	<div id="bottom_liner"></div>
+	<div id="right_liner"></div>
+	<div id="main"></div>
+	<div id="map"></div>
+	<div id="InputPanel">
+		<!-- <div id="MapContextSwitch"></div> -->
+	</div>
+	<div id="SliderPanel"></div>
+	<div id="OutputPanel"></div>
+	<div id="LegendaPanel"></div>
+	<div id="donutChart"></div>
+
+</body>
+
+<script>
+
+	
+</script>
+
+</html>
